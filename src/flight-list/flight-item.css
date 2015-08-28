@@ -1,0 +1,43 @@
+td.flight-item__destination:not(.short) .airport::after {
+    content: attr(data-airport) " (" attr(data-airport-code) ")";
+}
+
+td.flight-item__destination.short .airport::after {
+    content: attr(data-airport-code);
+}
+
+td.flight-item__plane:not(.short) .manufacturer::after {
+    content: attr(data-manufacturer) " ";
+}
+
+td.flight-item__plane:not(.short) .model::after {
+    content: attr(data-model);
+}
+
+td.flight-item__plane.short .model::after {
+    content: attr(data-model-short);
+}
+
+td.flight-item__time:not(.short) .time::after {
+    content: attr(data-time);
+}
+
+td.flight-item__time.short .time::after {
+    content: attr(data-time-short);
+}
+
+.flight-item__type_arrival > .flight-item__type {
+    background: url("./../img/arrivalsIcon.gif") no-repeat center;
+}
+
+.flight-item__type_departure > .flight-item__type {
+    background: url("./../img/departuresIcon.gif") no-repeat center;
+}
+
+.flight-item__extra {
+    max-width: 100px;
+}
+
+.flight-item__type {
+    min-width: 30px;
+}

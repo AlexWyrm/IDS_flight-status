@@ -1,0 +1,517 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Задание для ШРИ №1</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
+</head>
+<body>
+<div class="flight-list">
+    <h1>Flight status table</h1>
+
+    <div class="flight-list__selector">
+        <label for="flights_arrivals">Show arrivals</label>
+        <input type="checkbox" id="flights_arrivals" checked="checked" onclick="toggleArrivals()">
+        <label for="flights_departures">Show departures</label>
+        <input type="checkbox" id="flights_departures" checked="checked" onclick="toggleDepartures()">
+    </div>
+    <table class="flight-list__table">
+        <colgroup></colgroup>
+        <colgroup></colgroup>
+        <colgroup></colgroup>
+        <colgroup class="priority-3 collapsible"></colgroup>
+        <colgroup class="priority-2 shortable"></colgroup>
+        <colgroup class="priority-2 shortable"></colgroup>
+        <colgroup class="priority-2 shortable"></colgroup>
+        <colgroup></colgroup>
+        <colgroup class="priority-1 collapsible"></colgroup>
+        <thead>
+        <tr>
+            <th class="flight-item__type"></th>
+            <th class="flight-item__code">Flight</th>
+            <th class="flight-item__logo"></th>
+            <th class="flight-item__company">Company</th>
+            <th class="flight-item__plane">Plane model</th>
+            <th class="flight-item__destination">From/to</th>
+            <th class="flight-item__time">Scheduled</th>
+            <th class="flight-item__status">Status</th>
+            <th class="flight-item__extra">Extra</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="flight-item__type_arrival">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">SU4007</td>
+            <td class="flight-item__logo"><img src="img/SU.gif"></td>
+            <td class="flight-item__company">Aeroflot Airlines</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="Airbus"></span>
+                <span class="model" data-model="A320" data-model-short="A320"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Boston, MA" data-airport-code="BOS"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="6:24 AM, Aug 23" data-time-short="23.08 6:24"></span>
+            </td>
+            <td class="flight-item__status">In Air</td>
+            <td class="flight-item__extra"></td>
+        </tr>
+        <tr class="flight-item__type_departure">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">AB9310</td>
+            <td class="flight-item__logo"><img src="img/AB.gif"></td>
+            <td class="flight-item__company">Air Berlin</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="Airbus"></span>
+                <span class="model" data-model="A320" data-model-short="A320"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Phoenix, AZ" data-airport-code="PHX"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="6:50 AM, Aug 23" data-time-short="23.08 6:50"></span>
+            </td>
+            <td class="flight-item__status">Scheduled</td>
+            <td class="flight-item__extra"></td>
+        </tr>
+        <tr class="flight-item__type_departure">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">AC8901</td>
+            <td class="flight-item__logo"><img src="img/AC.gif"></td>
+            <td class="flight-item__company">Air Canada</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="-"></span>
+                <span class="model" data-model="" data-model-short="-"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Toronto" data-airport-code="YYZ"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="6:55 AM, Aug 23" data-time-short="23.08 6:55"></span>
+            </td>
+            <td class="flight-item__status">Scheduled</td>
+            <td class="flight-item__extra"></td>
+        </tr>
+        <tr class="flight-item__type_arrival">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">EI5017</td>
+            <td class="flight-item__logo"><img src="img/EI.gif"></td>
+            <td class="flight-item__company">Aer Lingus</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="Airbus"></span>
+                <span class="model" data-model="A320" data-model-short="A320"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Boston, MA" data-airport-code="BOS"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="7:00 AM, Aug 23" data-time-short="23.08 7:00"></span>
+            </td>
+            <td class="flight-item__status">Arrived</td>
+            <td class="flight-item__extra"></td>
+        </tr>
+        <tr class="flight-item__type_departure">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">AM405</td>
+            <td class="flight-item__logo"><img src="img/AM.gif"></td>
+            <td class="flight-item__company">AeroMexico</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="Boeing"></span>
+                <span class="model" data-model="737-800" data-model-short="737NG"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Mexico City" data-airport-code="MEX"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="9:00 AM, Aug 23" data-time-short="23.08 9:00"></span>
+            </td>
+            <td class="flight-item__status">Scheduled</td>
+            <td class="flight-item__extra">Example extra column</td>
+        </tr>
+        <tr class="flight-item__type_arrival">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">EI105</td>
+            <td class="flight-item__logo"><img src="img/EI.gif"></td>
+            <td class="flight-item__company">Aer Lingus</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="Airbus"></span>
+                <span class="model" data-model="A330-200" data-model-short="A332"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Dublin" data-airport-code="DUB"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="10:50 AM, Aug 23" data-time-short="23.08 10:50"></span>
+            </td>
+            <td class="flight-item__status">Scheduled</td>
+            <td class="flight-item__extra"></td>
+        </tr>
+        <tr class="flight-item__type_arrival">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">SU4007</td>
+            <td class="flight-item__logo"><img src="img/SU.gif"></td>
+            <td class="flight-item__company">Aeroflot Airlines</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="Airbus"></span>
+                <span class="model" data-model="A320" data-model-short="A320"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Boston, MA" data-airport-code="BOS"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="6:24 AM, Aug 23" data-time-short="23.08 6:24"></span>
+            </td>
+            <td class="flight-item__status">In Air</td>
+            <td class="flight-item__extra"></td>
+        </tr>
+        <tr class="flight-item__type_departure">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">AB9310</td>
+            <td class="flight-item__logo"><img src="img/AB.gif"></td>
+            <td class="flight-item__company">Air Berlin</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="Airbus"></span>
+                <span class="model" data-model="A320" data-model-short="A320"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Phoenix, AZ" data-airport-code="PHX"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="6:50 AM, Aug 23" data-time-short="23.08 6:50"></span>
+            </td>
+            <td class="flight-item__status">Scheduled</td>
+            <td class="flight-item__extra"></td>
+        </tr>
+        <tr class="flight-item__type_departure">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">AC8901</td>
+            <td class="flight-item__logo"><img src="img/AC.gif"></td>
+            <td class="flight-item__company">Air Canada</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="-"></span>
+                <span class="model" data-model="" data-model-short="-"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Toronto" data-airport-code="YYZ"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="6:55 AM, Aug 23" data-time-short="23.08 6:55"></span>
+            </td>
+            <td class="flight-item__status">Scheduled</td>
+            <td class="flight-item__extra"></td>
+        </tr>
+        <tr class="flight-item__type_arrival">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">EI5017</td>
+            <td class="flight-item__logo"><img src="img/EI.gif"></td>
+            <td class="flight-item__company">Aer Lingus</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="Airbus"></span>
+                <span class="model" data-model="A320" data-model-short="A320"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Boston, MA" data-airport-code="BOS"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="7:00 AM, Aug 23" data-time-short="23.08 7:00"></span>
+            </td>
+            <td class="flight-item__status">Arrived</td>
+            <td class="flight-item__extra"></td>
+        </tr>
+        <tr class="flight-item__type_departure">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">AM405</td>
+            <td class="flight-item__logo"><img src="img/AM.gif"></td>
+            <td class="flight-item__company">AeroMexico</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="Boeing"></span>
+                <span class="model" data-model="737-800" data-model-short="737NG"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Mexico City" data-airport-code="MEX"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="9:00 AM, Aug 23" data-time-short="23.08 9:00"></span>
+            </td>
+            <td class="flight-item__status">Scheduled</td>
+            <td class="flight-item__extra">Example extra column</td>
+        </tr>
+        <tr class="flight-item__type_arrival">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">EI105</td>
+            <td class="flight-item__logo"><img src="img/EI.gif"></td>
+            <td class="flight-item__company">Aer Lingus</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="Airbus"></span>
+                <span class="model" data-model="A330-200" data-model-short="A332"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Dublin" data-airport-code="DUB"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="10:50 AM, Aug 23" data-time-short="23.08 10:50"></span>
+            </td>
+            <td class="flight-item__status">Scheduled</td>
+            <td class="flight-item__extra"></td>
+        </tr>
+        <tr class="flight-item__type_arrival">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">SU4007</td>
+            <td class="flight-item__logo"><img src="img/SU.gif"></td>
+            <td class="flight-item__company">Aeroflot Airlines</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="Airbus"></span>
+                <span class="model" data-model="A320" data-model-short="A320"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Boston, MA" data-airport-code="BOS"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="6:24 AM, Aug 23" data-time-short="23.08 6:24"></span>
+            </td>
+            <td class="flight-item__status">In Air</td>
+            <td class="flight-item__extra"></td>
+        </tr>
+        <tr class="flight-item__type_departure">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">AB9310</td>
+            <td class="flight-item__logo"><img src="img/AB.gif"></td>
+            <td class="flight-item__company">Air Berlin</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="Airbus"></span>
+                <span class="model" data-model="A320" data-model-short="A320"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Phoenix, AZ" data-airport-code="PHX"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="6:50 AM, Aug 23" data-time-short="23.08 6:50"></span>
+            </td>
+            <td class="flight-item__status">Scheduled</td>
+            <td class="flight-item__extra"></td>
+        </tr>
+        <tr class="flight-item__type_departure">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">AC8901</td>
+            <td class="flight-item__logo"><img src="img/AC.gif"></td>
+            <td class="flight-item__company">Air Canada</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="-"></span>
+                <span class="model" data-model="" data-model-short="-"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Toronto" data-airport-code="YYZ"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="6:55 AM, Aug 23" data-time-short="23.08 6:55"></span>
+            </td>
+            <td class="flight-item__status">Scheduled</td>
+            <td class="flight-item__extra"></td>
+        </tr>
+        <tr class="flight-item__type_arrival">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">EI5017</td>
+            <td class="flight-item__logo"><img src="img/EI.gif"></td>
+            <td class="flight-item__company">Aer Lingus</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="Airbus"></span>
+                <span class="model" data-model="A320" data-model-short="A320"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Boston, MA" data-airport-code="BOS"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="7:00 AM, Aug 23" data-time-short="23.08 7:00"></span>
+            </td>
+            <td class="flight-item__status">Arrived</td>
+            <td class="flight-item__extra"></td>
+        </tr>
+        <tr class="flight-item__type_departure">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">AM405</td>
+            <td class="flight-item__logo"><img src="img/AM.gif"></td>
+            <td class="flight-item__company">AeroMexico</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="Boeing"></span>
+                <span class="model" data-model="737-800" data-model-short="737NG"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Mexico City" data-airport-code="MEX"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="9:00 AM, Aug 23" data-time-short="23.08 9:00"></span>
+            </td>
+            <td class="flight-item__status">Scheduled</td>
+            <td class="flight-item__extra">Example extra column</td>
+        </tr>
+        <tr class="flight-item__type_arrival">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">EI105</td>
+            <td class="flight-item__logo"><img src="img/EI.gif"></td>
+            <td class="flight-item__company">Aer Lingus</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="Airbus"></span>
+                <span class="model" data-model="A330-200" data-model-short="A332"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Dublin" data-airport-code="DUB"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="10:50 AM, Aug 23" data-time-short="23.08 10:50"></span>
+            </td>
+            <td class="flight-item__status">Scheduled</td>
+            <td class="flight-item__extra"></td>
+        </tr>
+        <tr class="flight-item__type_arrival">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">SU4007</td>
+            <td class="flight-item__logo"><img src="img/SU.gif"></td>
+            <td class="flight-item__company">Aeroflot Airlines</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="Airbus"></span>
+                <span class="model" data-model="A320" data-model-short="A320"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Boston, MA" data-airport-code="BOS"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="6:24 AM, Aug 23" data-time-short="23.08 6:24"></span>
+            </td>
+            <td class="flight-item__status">In Air</td>
+            <td class="flight-item__extra"></td>
+        </tr>
+        <tr class="flight-item__type_departure">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">AB9310</td>
+            <td class="flight-item__logo"><img src="img/AB.gif"></td>
+            <td class="flight-item__company">Air Berlin</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="Airbus"></span>
+                <span class="model" data-model="A320" data-model-short="A320"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Phoenix, AZ" data-airport-code="PHX"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="6:50 AM, Aug 23" data-time-short="23.08 6:50"></span>
+            </td>
+            <td class="flight-item__status">Scheduled</td>
+            <td class="flight-item__extra"></td>
+        </tr>
+        <tr class="flight-item__type_departure">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">AC8901</td>
+            <td class="flight-item__logo"><img src="img/AC.gif"></td>
+            <td class="flight-item__company">Air Canada</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="-"></span>
+                <span class="model" data-model="" data-model-short="-"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Toronto" data-airport-code="YYZ"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="6:55 AM, Aug 23" data-time-short="23.08 6:55"></span>
+            </td>
+            <td class="flight-item__status">Scheduled</td>
+            <td class="flight-item__extra"></td>
+        </tr>
+        <tr class="flight-item__type_arrival">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">EI5017</td>
+            <td class="flight-item__logo"><img src="img/EI.gif"></td>
+            <td class="flight-item__company">Aer Lingus</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="Airbus"></span>
+                <span class="model" data-model="A320" data-model-short="A320"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Boston, MA" data-airport-code="BOS"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="7:00 AM, Aug 23" data-time-short="23.08 7:00"></span>
+            </td>
+            <td class="flight-item__status">Arrived</td>
+            <td class="flight-item__extra"></td>
+        </tr>
+        <tr class="flight-item__type_departure">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">AM405</td>
+            <td class="flight-item__logo"><img src="img/AM.gif"></td>
+            <td class="flight-item__company">AeroMexico</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="Boeing"></span>
+                <span class="model" data-model="737-800" data-model-short="737NG"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Mexico City" data-airport-code="MEX"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="9:00 AM, Aug 23" data-time-short="23.08 9:00"></span>
+            </td>
+            <td class="flight-item__status">Scheduled</td>
+            <td class="flight-item__extra">Example extra column</td>
+        </tr>
+        <tr class="flight-item__type_arrival">
+            <td class="flight-item__type"></td>
+            <td class="flight-item__code">EI105</td>
+            <td class="flight-item__logo"><img src="img/EI.gif"></td>
+            <td class="flight-item__company">Aer Lingus</td>
+            <td class="flight-item__plane">
+                <span class="manufacturer" data-manufacturer="Airbus"></span>
+                <span class="model" data-model="A330-200" data-model-short="A332"></span>
+            </td>
+            <td class="flight-item__destination">
+                <span class="airport" data-airport="Dublin" data-airport-code="DUB"></span>
+            </td>
+            <td class="flight-item__time">
+                <span class="time" data-time="10:50 AM, Aug 23" data-time-short="23.08 10:50"></span>
+            </td>
+            <td class="flight-item__status">Scheduled</td>
+            <td class="flight-item__extra"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="flight-list__details" title="Flight details">
+        <table>
+            <tr id="details_type">
+                <th>Type:</th>
+                <td></td>
+            </tr>
+            <tr id="details_code">
+                <th>Flight:</th>
+                <td></td>
+            </tr>
+            <tr id="details_company">
+                <th>Company:</th>
+                <td></td>
+            </tr>
+            <tr id="details_plane">
+                <th>Plane model:</th>
+                <td></td>
+            </tr>
+            <tr id="details_destination">
+                <th>From/to:</th>
+                <td></td>
+            </tr>
+            <tr id="details_time">
+                <th>Scheduled:</th>
+                <td></td>
+            </tr>
+            <tr id="details_status">
+                <th>Status:</th>
+                <td></td>
+            </tr>
+            <tr id="details_extra">
+                <th>Extra:</th>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="js/scripts.min.js"></script>
+</body>
+</html>

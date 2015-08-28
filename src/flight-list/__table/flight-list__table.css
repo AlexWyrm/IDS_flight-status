@@ -1,0 +1,51 @@
+.flight-list__table tbody tr.highlighted {
+    background-color: rgba(221, 221, 221, 0.5);
+}
+
+.flight-list__table thead {
+    background: #333;
+    color: #FDFDFD;
+}
+
+th {
+    text-decoration: underline;
+}
+
+th, td {
+    padding: 5px;
+    text-align: center;
+}
+
+.flight-list__table {
+    border-collapse: collapse;
+    overflow: hidden;
+    width: 100%;
+    min-width: 400px;
+}
+
+.flight-list__table tbody td, .flight-list__table thead th {
+    position: relative;
+}
+
+.flight-list__table tbody td:hover::before {
+    background-color: #00afaf;
+    content: '\00a0';
+    height: 100%;
+    left: -5000px;
+    position: absolute;
+    top: 0;
+    width: 10000px;
+    z-index: -1;
+}
+
+.flight-list__table tbody td:hover::after {
+    background-color: #00afaf;
+    content: '\00a0';
+    height: 10000px;
+    left: 0;
+    position: absolute;
+    top: -5000px;
+    width: 100%;
+    z-index: -1;
+}
+

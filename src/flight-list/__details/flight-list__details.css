@@ -1,0 +1,7 @@
+.flight-list__details table {
+    width: 100%
+}
+
+.flight-list__details {
+    display: none;
+}

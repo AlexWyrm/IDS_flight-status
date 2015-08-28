@@ -1,0 +1,9 @@
+.flight-list__selector {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.flight-list__selector input {
+    margin-right: 10px;
+}
